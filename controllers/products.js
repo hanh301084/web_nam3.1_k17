@@ -37,16 +37,16 @@ exports.product_type=async (req, res) => {
     }
 }
 
-exports.product_low_price=async (req, res) => {
+exports.product_sort_price=async (req, res) => {
     try {
         const page = req.params.page;
-        const products = await Products.find({"price": {$lt:30000}}).sort({"price":1}).skip(page * 8).limit(8);
+        const products = await Products.find().sort({"price":1}).skip(page * 8).limit(8);
         //res.json(posts);
         res.render('products', {
             title1: '', title2: '', title3: 'selected', title4: '', title5: '', title6: '', title7: '',
             Products: products, i: 0,
             user: req.user,
-            type: "low_price",
+            type: "sort_price",
             page_current: page*1, 
             flag_end_page: products.length
         });
@@ -55,16 +55,16 @@ exports.product_low_price=async (req, res) => {
     }
 }
 
-exports.product_hight_price=async (req, res) => {
+exports.product_sort_name=async (req, res) => {
     try {
         const page = req.params.page;
-        const products = await Products.find({"price": {$gt:35000}}).sort({"price":-1}).skip(page * 8).limit(8);
+        const products = await Products.find().sort({"name":1}).skip(page * 8).limit(8);
         //res.json(posts);
         res.render('products', {
             title1: '', title2: '', title3: 'selected', title4: '', title5: '', title6: '', title7: '',
             Products: products, i: 0,
             user: req.user,
-            type: "hight_price",
+            type: "sort_name",
             page_current: page*1, 
             flag_end_page: products.length
         });
