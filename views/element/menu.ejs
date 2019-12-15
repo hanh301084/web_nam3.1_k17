@@ -1,0 +1,41 @@
+<div id="site_title"><a href="#">Floral Shop</a></div>
+<div id="templatemo_menu" class="ddsmoothmenu">
+    <ul>
+        <li><a href="../" class=<%= title1 %>>Home</a></li>
+        <li><a href="../about" class=<%= title2 %>>About</a></li>
+        <li><a href="../products/0" class=<%= title3 %>>Products</a>
+            <ul>
+                <li><a href="../products/hoa/0">Hoa</a></li>
+                <li><a href="../products/caykieng/0">Cây kiểng</a></li>
+                <li><a href="../products/raumam/0">Rau mầm</a></li>
+                <li><a href="../products/rauxanh/0">Rau xanh</a></li>
+                <li><a href="../products/cu/0">Củ</a></li>
+                <li><a href="../products/duoclieu/0">Dược liệu</a></li>
+            </ul>
+        </li>
+        <li><a href="../checkout" class=<%= title4 %>>Checkout</a></li>
+        <li><a href="../contact" class=<%= title5 %>>Contact</a></li>
+        <li><a href="../faqs" class=<%= title6 %>>FAQs</a></li>
+        <li><a href="#" class=<%= title7 %>>Account</a>
+            <ul>
+                <% if(user) { %>
+                <li><a href="#">Profile</a></li>
+                <li><a href="../users/logout">Log out</a></li>
+                <% } 
+                    else { %>
+                <li><a href="../users/register">Sign up</a></li>
+                <li><a href="../users/login">Log in</a></li>
+                <% }
+                    %>
+            </ul>
+        </li>
+    </ul>
+    <div id="templatemo_search">
+        <form action="#" method="get">
+            <input type="text" value="Site Search" name="keyword" id="keyword" title="keyword" onfocus="clearText(this)"
+                onblur="clearText(this)" class="txt_field" />
+            <input type="submit" name="Search" value="" alt="Search" id="searchbutton" title="Search" class="sub_btn" />
+        </form>
+    </div>
+    <br style="clear: left" />
+</div>

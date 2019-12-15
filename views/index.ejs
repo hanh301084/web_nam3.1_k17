@@ -1,0 +1,102 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Floral</title>
+    <% include element/head %>
+    <link rel="stylesheet" href="css/slimbox2.css" type="text/css" media="screen" />     <script type="text/JavaScript"
+         src="js/slimbox2.js">
+        </script>
+</head>
+
+<body>
+    <div id="templatemo_wrapper_h">
+        <form>
+            <div id="templatemo_header_wh">
+                <div id="templatemo_header" class="header_home">
+                    <% include element/menu %>
+                    <div class="slider-wrapper theme-orman">
+                        <div class="ribbon"></div>
+                        <div id="slider" class="nivoSlider">
+                            <img src="images/portfolio/01.jpg" alt="slider image 1" />
+                            <a href="#">
+                                <img src="images/portfolio/02.jpg" alt="slider image 2"
+                                    title="This is an example of a caption" />
+                            </a>
+                            <img src="images/portfolio/03.jpg" alt="slider image 3" />
+                            <img src="images/portfolio/04.jpg" alt="slider image 4" title="#htmlcaption" />
+                            <img src="images/portfolio/05.jpg" alt="slider image 5" title="#htmlcaption" />
+                        </div>
+                        <div id="htmlcaption" class="nivo-html-caption">
+                            <strong>Example</strong> caption with <a href="http://dev7studios.com" rel="nofollow">a
+                                credit
+                                link</a> for <em>this slider</em>.
+                        </div>
+                    </div>
+                    <script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
+                    <script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+                    <script type="text/javascript">
+                        $(window).load(function () {
+                            $('#slider').nivoSlider({
+                                controlNav: false
+                            });
+                        });
+                    </script>
+                </div> <!-- END of header -->
+            </div> <!-- END of header wrapper -->
+            <div id="templatemo_main_wrapper">
+                <div id="templatemo_main">
+                    <% include element/sidebar %>
+                    <div id="content" class="right">
+                        <h2>Chào mừng tới Floral Shop</h2>
+                        <p>
+                            <h6>Floral Shop tự hào là nhà cung cấp hạt giống uy tín chất lượng hàng đầu tại thị trường
+                                HCMUS
+                                với nhiều loại
+                                hạt giống đa dạng, cam kết về chất lượng hạt giống, giá cả hợp lý.</h6>
+                        </p>
+                        <p>
+                            <h6>Floral Shop luôn cập nhật những loại hạt giống mới nhất trên thị trường đảm bảo nhiều sự
+                                lựa
+                                chọn cho bạn.</h6>
+                        </p>
+
+                        <% if(Products) {  %>
+                        <% while(i!= Products.length ){ %>
+                        <div class="product_box">
+                            <a href="productdetail"><img src=<%= Products[i].imagPath %> alt="floral 1"
+                                    style="width:165px;height:165px;" /></a>
+                            <h3><%= Products[i].name %></h3>
+                            <p class="product_price"><%= Products[i].price %></p>
+                            <p class="add_to_cart">
+                                <a href="productdetail">Chi tiết</a>
+                                <a href="shoppingcart.html">Thêm vào giỏ</a>
+                            </p>
+                        </div>
+                        <%  i=i+1;  %>
+                        <% }   %>
+                        <% } %>
+
+                        <!-- <div class="product_box no_margin_right">
+            <a href="productdetail.html"><img src="images/product/04.jpg" alt="flowers 4" /></a>
+            <h3>Hendrerit Eu</h3>
+            <p class="product_price">$320</p>
+            <p class="add_to_cart">
+                <a href="productdetail.html">Chi tiết</a>
+                <a href="shoppingcart.html">Thêm vào giỏ</a>
+            </p>
+        </div>-->
+                        <div class="blank_box">
+                            <a href="#"><img src="images/free_shipping.jpg" alt="Free Shipping" /></a>
+                        </div>
+                    </div>
+                    <div class="cleaner"></div>
+                </div> <!-- END of main -->
+            </div> <!-- END of main wrapper -->
+            <% include element/footer %>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Products - Floral </title>
+    <% include element/head %>
+</head>
+
+<body>
+    <div id="templatemo_wrapper_sp">
+        <div id="templatemo_header_wsp">
+            <div id="templatemo_header" class="header_subpage">
+                <% include element/menu %>
+            </div> <!-- END of header -->
+        </div> <!-- END of header wrapper -->
+        <div id="templatemo_main_wrapper">
+            <div id="templatemo_main">
+                <% include element/sidebar %>
+                <div id="content" class="right">
+                    <h2>Sản Phẩm</h2>
+                    <p>Cras aliquam, mi nec imperdiet volutpat, ligula est consequat odio, eu auctor urna augue eu quam.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis bibendum nec nunc ac hendrerit.
+                        Morbi lacinia placerat diam sit amet fringilla. Integer accumsan suscipit suscipit. Mauris non
+                        nunc sit amet turpis pharetra mattis. Validate <a
+                            href="http://validator.w3.org/check?uri=referer" rel="nofollow"><strong>XHTML</strong></a>
+                        &amp; <a href="http://jigsaw.w3.org/css-validator/check/referer"
+                            rel="nofollow"><strong>CSS</strong></a>.</p>
+
+                    <% if(Products) {  %>    
+                    <% while(i!= Products.length ){ %>
+                    <div class="product_box">
+                        <a href="productdetail"><img src=<%= Products[i].imagPath %> alt="floral 1"
+                                style="width:165px;height:165px;" /></a>
+                        <h3><%= Products[i].name %></h3>
+                        <p class="product_price"><%= Products[i].price %></p>
+                        <p class="add_to_cart">
+                            <a href="productdetail">Chi tiết</a>
+                            <a href="shoppingcart.html">Thêm vào giỏ</a>
+                        </p>
+                    </div>
+                    <%  i=i+1;  %>
+                    <% }   %>
+                    <% } %>
+
+                    <div class="blank_box">
+                        <% if(page_current != 0) { %>
+                        <a href="products/<%= type %>/<%= page_current-1 %>" class="button left" style="clear:left" >Previous</a>
+                        <% }  %>
+                        <% if(flag_end_page == 8) { %>
+                        <a href="products/<%= type %>/<%= page_current +1 %>" class="button right" style="clear:left">Next Page</a>
+                        <% }  %>
+                    </div>
+
+                    <div class="cleaner h20"></div>
+                    <div class="blank_box">
+                        <a href="#"><img src="images/free_shipping.jpg" alt="Free Shipping" /></a>
+                    </div>
+                </div>
+                <div class="cleaner"></div>
+            </div> <!-- END of main -->
+        </div> <!-- END of main wrapper -->
+        <% include element/footer %>
+    </div>
+</body>
+
+</html>
