@@ -3,34 +3,64 @@
 Floral Shop Template 
 http://www.templatemo.com/preview/templatemo_385_floral_shop 
 -->
-    <base href="/">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <link href="templatemo_style.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="css/orman.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="css/nivo-slider.css" type="text/css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/ddsmoothmenu.css" />
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/ddsmoothmenu.js"></script>
-    <!--
+<base href="/">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="templatemo_style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/orman.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="css/nivo-slider.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/ddsmoothmenu.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/ddsmoothmenu.js"></script>
+<!--
     /**********************************************
     * Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
     * This notice MUST stay intact for legal use
     * Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
     ***********************************************/
     -->
-    <script type="text/javascript">
-        ddsmoothmenu.init({
-            mainmenuid: "templatemo_menu", //menu DIV id
-            orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
-            classname: 'ddsmoothmenu', //class added to menu's outer DIV
-            //customtheme: ["#1c5a80", "#18374a"],
-            contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
-        })
-        function clearText(field) {
-            if (field.defaultValue == field.value) field.value = '';
-            else if (field.value == '') field.value = field.defaultValue;
-        }
-    </script>
-   
+<script type="text/javascript">
+    ddsmoothmenu.init({
+        mainmenuid: "templatemo_menu", //menu DIV id
+        orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+        classname: 'ddsmoothmenu', //class added to menu's outer DIV
+        //customtheme: ["#1c5a80", "#18374a"],
+        contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+    })
+    function clearText(field) {
+        if (field.defaultValue == field.value) field.value = '';
+        else if (field.value == '') field.value = field.defaultValue;
+    }
+</script>
+<style>
+    /* Dùng trong <div> để định vị nội dung thả xuống */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    /* Nội dung thả xuống (Ẩn theo mặc định) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #e0dce2;
+        min-width: 100px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0);
+        z-index: 1;
+    }
+    /* Liên kết bên trong danh sách thả xuống */
+    .dropdown-content a {
+        color: grey;
+        padding: 3px 17px;
+        text-decoration: none;
+        display: block;
+    }
+    /* Thay đổi định dạng của liên kết thả xuống khi di chuột qua */
+    .dropdown-content a:hover {
+        color: black;
+    }
+    /* Hiển thị menu thả xuống khi di chuột */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+</style>
