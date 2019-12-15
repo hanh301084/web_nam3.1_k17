@@ -4,9 +4,9 @@ const controller =require('../controllers/products');
 
 router.get('/:page',controller.product);
 
-router.get('/low_price/:page',controller.product_low_price);
+router.get('/sort_price/:page',controller.product_sort_price);
 
-router.get('/hight_price/:page',controller.product_hight_price);
+router.get('/sort_name/:page',controller.product_sort_name);
 
 router.get('/:type/:page',controller.product_type);
 
