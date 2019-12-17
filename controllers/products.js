@@ -55,6 +55,23 @@ exports.product_sort_price=async (req, res) => {
     }
 }
 
+exports.product_detail=async (req, res) => {
+    try {
+        const id = req.params.id;
+        const products = await Products.findById(id);
+        const productsOther= await Products.find({"type":products.type});
+        //res.json(posts);
+        res.render('productdetail', {
+            title1: '', title2: '', title3: 'selected', title4: '', title5: '', title6: '', title7: '',
+            Products: products, i: 0,
+            ProductsOther: productsOther,
+            user: req.user
+        });
+    } catch (err) {
+        res.json({ message: err });
+    }
+}
+
 exports.product_sort_name=async (req, res) => {
     try {
         const page = req.params.page;

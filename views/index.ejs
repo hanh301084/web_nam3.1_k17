@@ -65,12 +65,12 @@
                         <% if(Products) {  %>
                         <% while(i!= Products.length ){ %>
                         <div class="product_box">
-                            <a href="productdetail"><img src=<%= Products[i].imagPath %> alt="floral 1"
+                            <a href="products/product_detail/<%= Products[i].id %>"><img src=<%= Products[i].imagPath %> alt="floral 1"
                                     style="width:165px;height:165px;" /></a>
                             <h3><%= Products[i].name %></h3>
                             <p class="product_price"><%= Products[i].price %></p>
                             <p class="add_to_cart">
-                                <a href="productdetail">Chi tiết</a>
+                                <a href="products/product_detail/<%= Products[i].id %>">Chi tiết</a>
                                 <a href="shoppingcart.html">Thêm vào giỏ</a>
                             </p>
                         </div>
@@ -78,15 +78,6 @@
                         <% }   %>
                         <% } %>
 
-                        <!-- <div class="product_box no_margin_right">
-            <a href="productdetail.html"><img src="images/product/04.jpg" alt="flowers 4" /></a>
-            <h3>Hendrerit Eu</h3>
-            <p class="product_price">$320</p>
-            <p class="add_to_cart">
-                <a href="productdetail.html">Chi tiết</a>
-                <a href="shoppingcart.html">Thêm vào giỏ</a>
-            </p>
-        </div>-->
                         <div class="blank_box">
                             <a href="#"><img src="images/free_shipping.jpg" alt="Free Shipping" /></a>
                         </div>
