@@ -1,0 +1,55 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Profile - Floral Template</title>
+    <% include element/head %>
+</head>
+
+<body>
+    <div id="templatemo_wrapper_sp">
+        <div id="templatemo_header_wsp">
+            <div id="templatemo_header" class="header_subpage">
+                <% include element/menu %>
+            </div> <!-- END of header -->
+        </div> <!-- END of header wrapper -->
+        <div id="templatemo_main_wrapper">
+            <div id="templatemo_main">
+                <% include element/sidebar %>
+                <div id="content" class="right">
+                    <h2>Profile</h2>
+                    <h3>THÔNG TIN TÀI KHOẢN</h3>
+                    <form action="/users/profile" method="POST" role='form'>
+                        <div class="content_half left form_field">
+                            Username:
+                            <input name="username" type="text" id="username" value=<%= user.username %> maxlength="40"
+                                minlength="5" />
+                            Gender:
+                            <input name="gender" type="text" id="gender" value=<%= user.gender %> maxlength="40" />
+                            Age:
+                            <input name="age" type="number" id="age" value=<%= user.age %> maxlength="40" />
+                            <br><br>
+                        </div>
+                        <div class="content_half right form_field">
+                            Country:
+                            <input name="country" type="text" id="country" value=<%= user.country %> maxlength="40" />
+                            Email:
+                            <input name="email" type="email" id="email" value=<%= user.email %> maxlength="40" />
+                            Phone:
+                            <input name="phone" type="text" id="phone" value=<%= user.phone %> maxlength="40" />
+                            <br><br>
+                        </div>
+                        <input type="submit" value="Update" />
+                        
+                    </form>
+                    <div class="cleaner h40"></div>
+                </div>
+                <div class="cleaner"></div>
+            </div> <!-- END of main -->
+        </div> <!-- END of main wrapper -->
+        <% include element/footer %>
+    </div>
+</body>
+
+</html>

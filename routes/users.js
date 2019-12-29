@@ -11,5 +11,8 @@ router.post('/login',user_controller.post_login );
 
 router.get('/logout',user_controller.get_logout );
 
+router.get('/profile',user_controller.get_profile );
+router.post('/profile',user_controller.patch_profile );
+
 module.exports = router;
 
