@@ -30,13 +30,13 @@
                     <% if(Products) {  %>    
                     <% while(i!= Products.length ){ %>
                     <div class="product_box">
-                        <a href="products/product_detail/<%= Products[i].id %>">
+                        <a href="products/product_detail/<%= Products[i].id %>/0">
                             <img src=<%= Products[i].imagPath %> alt="floral 1" style="width:165px;height:165px;" />
                         </a>
                         <h3><%= Products[i].name %></h3>
                         <p class="product_price"><%= Products[i].price %></p>
                         <p class="add_to_cart">
-                            <a href="products/product_detail/<%= Products[i].id %>">Chi tiết</a>
+                            <a href="products/product_detail/<%= Products[i].id %>/0">Chi tiết</a>
                             <a href="shoppingcart.html">Thêm vào giỏ</a>
                         </p>
                     </div>
@@ -49,7 +49,7 @@
                         <a href="products/<%= type %>/<%= page_current-1 %>" class="button left" style="clear:left" >Previous</a>
                         <% }  %>
                         <% if(flag_end_page == 8) { %>
-                        <a href="products/<%= type %>/<%= page_current +1 %>" class="button right" style="clear:left">Next Page</a>
+                        <a href="products/<%= type %>/<%= page_current +1 %>" class="button right" style="float:right;">Next Page</a>
                         <% }  %>
                     </div>
 

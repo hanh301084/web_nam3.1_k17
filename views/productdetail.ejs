@@ -55,26 +55,58 @@
                     <h4>Bình luận</h4>
                     <div>
                         <form action="/products/product_detail/<%= Products.id %>/add_comment" method="POST">
-                        <% if(user) { %>
-                        <input type="text" name="name" value="<%= user.username %>" style="background-color:darkolivegreen;border-color:darkolivegreen ;" readonly/><br />
-                        <i>Viết bình luận</i><br />
-                        <input type="text" name="comment" size="100" style="background-color:darkolivegreen;border-color:darkolivegreen ;" /> 
-                        <% } 
+                            <% if(user) { %>
+                            <input type="text" name="name" value="<%= user.username %>"
+                                style="background-color:darkolivegreen;border-color:darkolivegreen ;" readonly /><br />
+                            <i>Viết bình luận</i><br />
+                            <input type="text" name="comment" size="100"
+                                style="background-color:darkolivegreen;border-color:darkolivegreen ;" />
+                            <% } 
                         else { %>
-                        <nav id="enter" style="color:yellow"></nav>
-                        <input type="text" name="name" style="background-color:darkolivegreen;border-color:darkolivegreen ;" /><br />
-                        <i>Viết bình luận</i><br />
-                        <input type="text" name="comment"size="100" style="background-color:darkolivegreen;border-color:darkolivegreen ;" onclick="enterYourname();" /> 
-                        <% } %>
-                        <br />
-                        <input type="submit" value="Gửi" />
+                            <nav id="enter" style="color:yellow"></nav>
+                            <input type="text" name="name"
+                                style="background-color:darkolivegreen;border-color:darkolivegreen ;" /><br />
+                            <i>Viết bình luận</i><br />
+                            <input type="text" name="comment" size="100"
+                                style="background-color:darkolivegreen;border-color:darkolivegreen ;"
+                                onclick="enterYourname();" />
+                            <% } %>
+                            <br />
+                            <input type="submit" value="Gửi" />
                         </form>
                     </div>
                     <br /><br />
                     <div>
                         <% if(ListComment)  { %>
-
+                        <% while(j!=ListComment.length) { %>
+                        <p>
+                            <i><%= ListComment[j].dateAdd %></i><br />
+                            <b><%= ListComment[j].name %></b><br />
+                            <%= ListComment[j].comment %>
+                        </p>
+                        <%  j=j+1;  %>
                         <% } %>
+                        <% } %>
+                    </div>
+                    <div>
+                        <% if(page_comment_current != 0) { %>
+                        <a href="products/product_detail/<%= Products.id %>/<%= page_comment_current-1 %>"
+                            style="clear:left;">Trước</a>
+                        <% }  %>
+                        <% if(page_comment_current -1 >= 0) { %>
+                        <a href="products/product_detail/<%= Products.id %>/<%= page_comment_current - 1 %>"
+                            style="float:center;">&emsp;&emsp;&emsp;<%= page_comment_current -1 %></a>
+                        <% }  %>
+                        <a href="products/product_detail/<%= Products.id %>/<%= page_comment_current %>"
+                            style="float:center;"><%= page_comment_current %> </a>
+                        <% if(ListComment.length == 5) { %>
+                        <a href="products/product_detail/<%= Products.id %>/<%= page_comment_current +1 %>"
+                            style="float:center;"><%= page_comment_current +1 %> </a>
+                        <% }  %>
+                        <% if(ListComment.length == 5) { %>
+                        <a
+                            href="products/product_detail/<%= Products.id %>/<%= page_comment_current +1 %>">&emsp;&emsp;&emsp;Sau</a>
+                        <% }  %>
                     </div>
                     <div class="cleaner h40"></div>
 
