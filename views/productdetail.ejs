@@ -52,6 +52,32 @@
                     <p><%= Products.description %></p>
                     <div class="cleaner h40"></div>
 
+                    <h4>Bình luận</h4>
+                    <div>
+                        <form action="/products/product_detail/<%= Products.id %>/add_comment" method="POST">
+                        <% if(user) { %>
+                        <input type="text" name="name" value="<%= user.username %>" style="background-color:darkolivegreen;border-color:darkolivegreen ;" readonly/><br />
+                        <i>Viết bình luận</i><br />
+                        <input type="text" name="comment" size="100" style="background-color:darkolivegreen;border-color:darkolivegreen ;" /> 
+                        <% } 
+                        else { %>
+                        <nav id="enter" style="color:yellow"></nav>
+                        <input type="text" name="name" style="background-color:darkolivegreen;border-color:darkolivegreen ;" /><br />
+                        <i>Viết bình luận</i><br />
+                        <input type="text" name="comment"size="100" style="background-color:darkolivegreen;border-color:darkolivegreen ;" onclick="enterYourname();" /> 
+                        <% } %>
+                        <br />
+                        <input type="submit" value="Gửi" />
+                        </form>
+                    </div>
+                    <br /><br />
+                    <div>
+                        <% if(ListComment)  { %>
+
+                        <% } %>
+                    </div>
+                    <div class="cleaner h40"></div>
+
                     <h4>Sản phẩm liên quan</h4>
                     <% if(ProductsOther)  { %>
                     <div id="slider" class="nivoSlider" style="width: 300px;height: 250px;box-sizing: border-box;">

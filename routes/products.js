@@ -10,6 +10,8 @@ router.get('/sort_name/:page',controller.product_sort_name);
 
 router.get('/product_detail/:id',controller.product_detail);
 
+router.post('/product_detail/:id/add_comment',controller.post_comment);
+
 router.get('/:type/:page',controller.product_type);
 
 

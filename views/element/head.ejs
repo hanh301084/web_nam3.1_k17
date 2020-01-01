@@ -32,6 +32,9 @@ http://www.templatemo.com/preview/templatemo_385_floral_shop
         if (field.defaultValue == field.value) field.value = '';
         else if (field.value == '') field.value = field.defaultValue;
     }
+    function enterYourname(){
+        document.getElementById("enter").innerHTML="nhập tên của bạn";   
+    }
 </script>
 <style>
     /* Dùng trong <div> để định vị nội dung thả xuống */
@@ -39,6 +42,7 @@ http://www.templatemo.com/preview/templatemo_385_floral_shop
         position: relative;
         display: inline-block;
     }
+
     /* Nội dung thả xuống (Ẩn theo mặc định) */
     .dropdown-content {
         display: none;
@@ -48,6 +52,7 @@ http://www.templatemo.com/preview/templatemo_385_floral_shop
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0);
         z-index: 1;
     }
+
     /* Liên kết bên trong danh sách thả xuống */
     .dropdown-content a {
         color: grey;
@@ -55,13 +60,14 @@ http://www.templatemo.com/preview/templatemo_385_floral_shop
         text-decoration: none;
         display: block;
     }
+
     /* Thay đổi định dạng của liên kết thả xuống khi di chuột qua */
     .dropdown-content a:hover {
         color: black;
     }
+
     /* Hiển thị menu thả xuống khi di chuột */
     .dropdown:hover .dropdown-content {
         display: block;
     }
 </style>
-  
