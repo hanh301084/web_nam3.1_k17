@@ -14,5 +14,7 @@ router.get('/logout',user_controller.get_logout );
 router.get('/profile',user_controller.get_profile );
 router.post('/profile',user_controller.patch_profile );
 
-module.exports = router;
+router.post('/sendMailVeri', user_controller.send_email_verification);
+
+module.exports = router; 
 

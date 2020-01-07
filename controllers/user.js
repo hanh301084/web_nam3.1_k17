@@ -1,4 +1,5 @@
 const passport = require('passport');
+const nodemailer = require('nodemailer');
 const User = require('../models/user');
 
 exports.get_register = function (req, res) {
@@ -50,7 +51,6 @@ exports.get_profile = function (req, res) {
         user: req.user
     })
 }
-
 exports.patch_profile = async (req, res) => {
     try {
         const updatedUser = await User.updateOne({ "_id": req.user._id },
@@ -65,8 +65,8 @@ exports.patch_profile = async (req, res) => {
                     phone: req.body.phone
                 }
             }
-        );     
-        const userUp=await User.findById( req.user._id);
+        );
+        const userUp = await User.findById(req.user._id);
         res.render('profile', {
             title1: '', title2: '', title3: '', title4: '', title5: '', title6: '', title7: 'selected',
             user: userUp
@@ -74,4 +74,30 @@ exports.patch_profile = async (req, res) => {
     } catch (err) {
         res.json({ message: err });
     }
+}
+
+exports.send_email_verification = function (req, res) {
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'florashopoffice@gmail.com',
+            pass: process.env.PASS_EMAIL
+        }
+    });
+    const code = Math.floor(Math.random() * 10000) + 1000;
+    const mailOptions = {
+        from: 'Flora Shop',
+        to: req.body.email,
+        subject: 'Wellcome to FloraShop!!',
+        text: code
+    };
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+            res.redirect('/users/register', code);
+        }
+    })
+     res.redirect('/users/register');
 }

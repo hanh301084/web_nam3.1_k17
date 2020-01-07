@@ -20,23 +20,29 @@
                 <div id="content" class="right">
                     <h2>Account</h2>
                     <h3>Sign up</h3>
-                    <form action="/users/register" method="POST" role='form'>
+                    <form id="form" name="form" action="/users/register" method="POST" >
                         <div class="content_half left form_field">
                             Username:
-                            <input name="username" type="text" id="username" value="<%= dataForm.username %>" maxlength="40" minlength="3" required />
+                            <input name="username" type="text" id="username" value="<%= dataForm.username %>"
+                                maxlength="40" minlength="3" required />
                             Gender:
-                            <input name="gender" type="text" id="gender"value="<%= dataForm.gender %>" maxlength="40" required />
+                            <input name="gender" type="text" id="gender" value="<%= dataForm.gender %>" maxlength="40"
+                                required />
                             Age:
-                            <input name="age" type="number" id="age" value="<%= dataForm.age %>" maxlength="40" required />
+                            <input name="age" type="number" id="age" value="<%= dataForm.age %>" maxlength="40"
+                                required />
                             Country:
-                            <input name="country" type="text" id="country" value="<%= dataForm.country %>" maxlength="40" required />
+                            <input name="country" type="text" id="country" value="<%= dataForm.country %>"
+                                maxlength="40" required />
                             <br><br>
                         </div>
                         <div class="content_half right form_field">
                             Email:
-                            <input name="email" type="email" id="email" value="<%= dataForm.email %>" maxlength="40" required />
+                            <input name="email" type="email" id="email" value="<%= dataForm.email %>" maxlength="40"
+                                required />
                             Phone:<br />
-                            <input name="phone" type="text" id="phone" value="<%= dataForm.phone %>" maxlength="40" required />
+                            <input name="phone" type="text" id="phone" value="<%= dataForm.phone %>" maxlength="40"
+                                required />
                             Password:
                             <input name="password" type="password" id="password" maxlength="40" minlength="5"
                                 required />
@@ -44,16 +50,21 @@
                             <input name="confirm" type="password" id="confirm" maxlength="40" minlength="5" required />
                             <br><br>
                         </div>
+                        <input type="submit" value="Nhận mã xác nhận" formaction="/users/sendMailVeri"
+                            onclick="sentMailVerification();" /> <br /><br />
+                        <i id="sentMail"></i><br /><br />
+                        Confirm code:
+                        <input name="confirmCode" type="string" id="confirmCode" length="4"  /><br /><br />
                         <input type="submit" value="Sign up" />
                     </form>
                     <br>
                     <% if(hasErrors) { %>
-                        <div class="alert alert-danger">
-                           <% messages.forEach(function(message){ %>
-                              <h5 style="color:red"><%=  message %></h5>
-                           <% })%>    
-                        </div>
-                     <% } %>
+                    <div class="alert alert-danger">
+                        <% messages.forEach(function(message){ %>
+                        <h5 style="color:red"><%=  message %></h5>
+                        <% })%>
+                    </div>
+                    <% } %>
                     <br><br><br>
                     <div class="blank_box">
                         <a href="#"><img src="images/free_shipping.jpg" alt="Free Shipping" /></a>

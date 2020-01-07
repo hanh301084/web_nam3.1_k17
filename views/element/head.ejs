@@ -32,8 +32,12 @@ http://www.templatemo.com/preview/templatemo_385_floral_shop
         if (field.defaultValue == field.value) field.value = '';
         else if (field.value == '') field.value = field.defaultValue;
     }
-    function enterYourname(){
-        document.getElementById("enter").innerHTML="nhập tên của bạn";   
+    function enterYourname() {
+        document.getElementById("enter").innerHTML = "nhập tên của bạn";
+    }
+    function sentMailVerification() {
+        document.getElementById("sentMail").innerHTML = "Flora Shop vừa gửi cho bạn 1 email. Vui lòng kiểm tra email và nhập mã code xác nhận";
+        document.getElementById("sentMail").style.color="yellow";
     }
 </script>
 <style>

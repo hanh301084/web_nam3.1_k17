@@ -17,7 +17,8 @@ passport.use('register', new LocalStrategy({   //
     req.checkBody("email", "Email address invalid, please check again.").isEmail();
     req.checkBody("phone", "Phone is required").notEmpty();
     req.checkBody("password", "Password is required min length is 6").notEmpty().isLength({ min: 6 });
-    req.checkBody('confirm', 'Password confirm is the not same, please check again.').equals(req.body.confirm);
+    req.checkBody('confirm', 'Password confirm is the not same, please check again.').equals(req.body.password);
+    //req.checkBody('confirmCode', 'Confirm code is incorrect, please check again.').equals(code);
     const errors = req.validationErrors();
     if (errors) {
         const messages = [];

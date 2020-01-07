@@ -29,6 +29,7 @@
 
                     <% if(Products) {  %>    
                     <% while(i!= Products.length ){ %>
+                    <form id="form" action="products/add_cart/<%= Products[i].id %>" method="POST">
                     <div class="product_box">
                         <a href="products/product_detail/<%= Products[i].id %>/0">
                             <img src=<%= Products[i].imagPath %> alt="floral 1" style="width:165px;height:165px;" />
@@ -37,10 +38,10 @@
                         <p class="product_price"><%= Products[i].price %></p>
                         <p class="add_to_cart">
                             <a href="products/product_detail/<%= Products[i].id %>/0">Chi tiết</a>
-                            <a href="shoppingcart.html">Thêm vào giỏ</a>
+                            <a><input type="submit" value="Thêm vào giỏ" formaction="products/add_cart/<%= Products[i].id %>"></a>
                         </p>
                     </div>
-                    <%  i=i+1;  %>
+                    <%  i=i+1;  %>  </form>
                     <% }   %>
                     <% } %>
 
