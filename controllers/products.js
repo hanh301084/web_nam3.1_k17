@@ -60,6 +60,12 @@ exports.product_detail = async (req, res) => {
     try {
         const id = req.params.id;
         const products = await Products.findById(id);
+        const upPro=await Products.updateOne({_id:products._id},
+            {
+                $set:{
+                    view: products.view +1
+                }
+            });
         const productsOther = await Products.find({ "type": products.type });
         const listComment = await Comments.find({ "id_product": id }).skip(req.params.page_comment * 5).limit(5);
         //res.json(posts);
@@ -108,36 +114,59 @@ exports.post_comment = async (req, res) => {
 }
 
 exports.add_cart = async (req, res) => {
-    const user = null;
-    try {
-        if (req.user) { user = req.user._id; }
-        if (req.session.cart) {
+    try {  
+        const pro=await Products.findById(req.params.id);
+        if (req.session.cart) {           
             const add1 = await Cart.updateOne({ _id: req.session.cart._id }, {
                 $push: {
                     id_product: req.params.id
                 }
             });
             const add2 = await Cart.updateOne({ _id: req.session.cart._id }, {
-                $set: {
-                    id_user: user,
-                    totalQuantities: req.session.cart.totalQuantities + 1
+                $set: {                
+                    totalQuantities: req.session.cart.totalQuantities + 1,
+                    totalMoney:req.session.cart.totalMoney+pro.price
                 }
             });
             const addCart = await Cart.findById(req.session.cart._id);
             req.session.cart = addCart;
         }
-        else {
+        else { console.log("123");  
             const addCart = new Cart({
-                id_user: user,
                 id_product: [req.params.id],
-                totalQuantities: 1
+                totalQuantities: 1,
+                totalMoney:pro.price
             });
             const saveCart = await addCart.save();
             req.session.cart = saveCart;
         }
         console.log(req.session.cart);
-        res.redirect("/products/0");
+        res.redirect("/shoppingcart");
     } catch (err) {
         res.json({ message: err });
     }
 }
+
+exports.remove_cart = async (req, res) => {
+    try {
+        const pro = await Products.findById(req.params.id);
+        const add1 = await Cart.updateOne({ _id: req.session.cart._id }, {
+            $pull: {
+                id_product: req.params.id
+            }
+        });
+        const add2 = await Cart.updateOne({ _id: req.session.cart._id }, {
+            $set: {
+                totalQuantities: req.session.cart.totalQuantities - 1,
+                totalMoney: req.session.cart.totalMoney - pro.price
+            }
+        });
+        const addCart = await Cart.findById(req.session.cart._id);
+        req.session.cart = addCart;
+        console.log(req.session.cart);
+        res.redirect("/shoppingcart");
+    } catch (err) {
+        res.json({ message: err });
+    }
+}
+

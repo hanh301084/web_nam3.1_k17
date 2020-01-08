@@ -84,20 +84,20 @@ exports.send_email_verification = function (req, res) {
             pass: process.env.PASS_EMAIL
         }
     });
-    const code = Math.floor(Math.random() * 10000) + 1000;
+    //const code = Math.floor(Math.random() * 10000) + 1000;
     const mailOptions = {
         from: 'Flora Shop',
         to: req.body.email,
         subject: 'Wellcome to FloraShop!!',
-        text: code
+        text: process.env.CODE
     };
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             console.log(error);
+            res.json(error);
         } else {
             console.log('Email sent: ' + info.response);
-            res.redirect('/users/register', code);
+            res.redirect('/users/register');
         }
     })
-     res.redirect('/users/register');
 }

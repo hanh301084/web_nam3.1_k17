@@ -6,6 +6,8 @@ router.get('/:page',controller.product);
 
 router.post('/add_cart/:id', controller.add_cart);
 
+router.post('/remove_cart/:id',controller.remove_cart);
+
 router.get('/sort_price/:page',controller.product_sort_price);
 
 router.get('/sort_name/:page',controller.product_sort_name);

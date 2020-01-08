@@ -5,6 +5,8 @@ const billSchema = mongoose.Schema({
     id_cart:{type:String, require:true},
     address: { type: String, require: true },
     city: {type: String, require: true },
+    total: {type: Number, require: true },
+    status:{type:String, require:true},
     dateAdd: {
         type: Date,
         default: Date.now

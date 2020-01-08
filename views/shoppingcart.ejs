@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <title>Shopping Cart - Floral Template</title>
     <% include element/head %>
 </head>
+
 <body>
     <div id="templatemo_wrapper_sp">
         <div id="templatemo_header_wsp">
@@ -19,24 +22,36 @@
                     <table width="700" border="0" cellpadding="5" cellspacing="0">
                         <tr bgcolor="#395015">
                             <th width="168" align="left">Sản phẩm</th>
-                            <th width="188" align="left">Mô tả</th>
-                            <th width="60" align="center">Số lượng</th>
-                            <th width="80" align="right">Giá</th>
-                            <th width="80" align="right">Tổng</th>
+                            <th width="168" align="left">Tên</th>
+                            <th width="60" align="center">Giá</th>
+                            <!--<th width="80" align="right">Giá</th>-->
+                            <th width="64"> </th>
                             <th width="64"> </th>
                         </tr>
-                        
-                        <tr bgcolor="#41581B">
-                            <td><img src="images/product/01.jpg" alt="flower image 1" /></td>
-                            <td>Ut eu feugiat</td>
-                            <td align="center"><input name="quantity1" type="text" id="quantity1" value="1" size="6"
-                                    maxlength="2" /> </td>
-                            <td align="right">$240</td>
-                            <td align="right">$240</td>
-                            <td align="center"> <a href="#"><img src="images/remove.png" alt="remove" /><br />Remove</a>
-                            </td>
-                        </tr>
-                        
+
+                        <% if(_cart) {  %>
+                        <% while(i!= _cart.length ){ %>
+                        <form name="form" action="" method="POST">
+                            <tr bgcolor="#41581B">
+                                <td><img src="<%= _cart[i].imagPath %>" alt="flower image 1"
+                                        style="width:165px;height:165px;" /></td>
+                                <td><%= _cart[i].name %></td>
+                                <!--<td align="center"><input name="quantity1" type="text" id="quantity1" value="1" size="6"
+                                        maxlength="2" /> </td>-->
+                                <td align="center"><%= _cart[i].price %></td>
+                                <td align="right">
+                                    <input value="Remove" type="submit"
+                                        formaction="/products/remove_cart/<%= _cart[i]._id %>" />
+                                </td>
+                                <td align="center">
+                                    <input value="Add" type="submit"
+                                        formaction="/products/add_cart/<%= _cart[i]._id %>" />
+                                </td>
+                            </tr>
+                        </form>
+                        <%  i=i+1;  %>
+                        <% }   %>
+
                         <tr bgcolor="#41581B">
                             <td colspan="3">Have you modified item quantities? Please <a
                                     href="shoppingcart.html"><strong>Update</strong></a> the Cart.&nbsp;&nbsp;</td>
@@ -44,10 +59,10 @@
                                 <h4>Tổng tiền:</h4>
                             </td>
                             <td align="right">
-                                <h4>$560</h4>
+                                <h4><%= total %></h4>
                             </td>
-                            <td> </td>
                         </tr>
+                        <% } %>
                     </table>
                     <div class="cleaner h20"></div>
                     <div class="right"><a href="checkout" class="button">checkout</a></div>
@@ -62,4 +77,5 @@
         <% include element/footer %>
     </div>
 </body>
+
 </html>

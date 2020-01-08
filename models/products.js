@@ -6,6 +6,7 @@ const productsSchema = mongoose.Schema({
     price: {type: Number, require: true},
     description: { type: String, require: false},
     imagPath: { type: String, require: true },
+    view:{type: Number, require: true},
     dateAdd: {
         type: Date,
         default: Date.now

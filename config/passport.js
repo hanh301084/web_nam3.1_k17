@@ -8,7 +8,7 @@ passport.use('register', new LocalStrategy({   //
     usernameField: 'username',
     passwordField: 'password',
     passReqToCallback: true
-}, function (req, username, password, done) {
+}, function (req, username, password, done, res) {
     // ...validator
     req.checkBody("username", "Username is required").notEmpty().isLength({ min: 3 });
     req.checkBody("gender", "Gender is required").notEmpty();
@@ -18,11 +18,12 @@ passport.use('register', new LocalStrategy({   //
     req.checkBody("phone", "Phone is required").notEmpty();
     req.checkBody("password", "Password is required min length is 6").notEmpty().isLength({ min: 6 });
     req.checkBody('confirm', 'Password confirm is the not same, please check again.').equals(req.body.password);
-    //req.checkBody('confirmCode', 'Confirm code is incorrect, please check again.').equals(code);
+    //if(req.body.confirmCode==""){ res.redirect('/users/sendMailVeri'); }
+    //req.checkBody('confirmCode', 'Confirm code is incorrect, please check again.').equals(process.env.CODE);
     const errors = req.validationErrors();
     if (errors) {
         const messages = [];
-        errors.forEach(function (error) {
+        errors.forEach(function (error) { 
             messages.push(error.msg);
         });
         return done(null, false, req.flash('error', messages));
