@@ -28,4 +28,12 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
-    - run: npm start
+    - name: Deploy to host
+      uses: akhileshns/heroku-deploy@v3.12.12
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: "florashopweb1731"
+        heroku_email: "nha302031@gmail.com"
+        procfile: "web: npm start"
+      
+    
